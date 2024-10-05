@@ -1,0 +1,27 @@
+### FETCH  REQUEST
+GET http://localhost:3000
+
+
+### FETCH SONGS REQUEST
+GET http://localhost:3000/songs
+
+### FIND SONG REQUEST
+GET http://localhost:3000/songs/0
+
+### CREATE NEW SONGS
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{
+"title": "Ninja1",
+"artist": ["theHoracle"],
+"album": "TheYesMan",
+"releaseDate": "2024-09-02",
+"duration": "00:03:25"
+}
+### UPDATE SONGS REQ
+PUT http://localhost:3000/songs/1
+
+### UPDATE SONGS REQ
+DELETE  http://localhost:3000/songs/1
+
