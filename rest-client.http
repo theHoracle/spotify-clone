@@ -6,22 +6,41 @@ GET http://localhost:3000
 GET http://localhost:3000/songs
 
 ### FIND SONG REQUEST
-GET http://localhost:3000/songs/0
+GET http://localhost:3000/songs/1
 
 ### CREATE NEW SONGS
 POST http://localhost:3000/songs
 Content-Type: application/json
 
 {
-"title": "Ninja1",
-"artist": ["theHoracle"],
-"album": "TheYesMan",
-"releaseDate": "2024-09-02",
-"duration": "00:03:25"
+"title": "Waking up wednesdday",
+"artists": [1,2],
+"releaseDate": "2024-10-10",
+"duration": "02:55",
+"lyrics": "One day we go to school, Tuesdaey we go to church, Wednessay we figh our home , Thursday we stay at home, Friday we have to Chop lofe bvjjv v ihdiu"
 }
 ### UPDATE SONGS REQ
-PUT http://localhost:3000/songs/1
+PUT http://localhost:3000/songs/2
+Content-Type: application/json
 
-### UPDATE SONGS REQ
+{
+"title": "Horacle Fights Ye",
+"artists": ["KDOt", "YE", "Post Malone"],
+"releaseDate": "2024-09-02",
+"duration": "03:25",
+"lyrics": "How to work here"
+}
+
+### UPDATE SONGS REQa
 DELETE  http://localhost:3000/songs/1
 
+### Sign up user
+POST http://localhost:3000/auth/signup
+Content-Type: "application/json"
+{
+"email": "theHoracle0@gmail.com",
+"firstName": "James",
+"lastName": "Morgan",
+"username": "theHoracle",
+"password": "223456"
+}
