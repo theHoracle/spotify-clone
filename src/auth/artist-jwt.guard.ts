@@ -20,7 +20,6 @@ export class ArtistJwtGuard extends AuthGuard('jwt') {
         'You are not authorized to access this resource',
       );
     }
-    console.log('user: ', user);
 
     if (user.artistId) {
       return user;

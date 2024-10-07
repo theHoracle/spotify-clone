@@ -4,3 +4,7 @@ interface Payload {
   username: string;
   artistId?: number;
 }
+
+type TEnable2FA = {
+  secret: string;
+};
