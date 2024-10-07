@@ -13,7 +13,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { Song } from './songs/song.entity';
 import { ArtistModule } from './artist/artist.module';
-
 import { UsersModule } from './users/users.module';
 import { Artist } from './artist/artist.entity';
 import { User } from './users/user.entity';
