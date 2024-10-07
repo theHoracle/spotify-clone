@@ -5,6 +5,7 @@ import { User } from './user.entity';
 import { CreateUserDTO } from './dto/create-user-dto';
 import * as bcrypt from 'bcryptjs';
 import { LoginDTO } from 'src/auth/dto/login-dto';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UsersService {
@@ -16,7 +17,8 @@ export class UsersService {
   async create(userDTO: CreateUserDTO) {
     const salt = await bcrypt.genSalt();
     userDTO.password = await bcrypt.hash(userDTO.password, salt);
-    const newUser = await this.usersRepository.save(userDTO);
+    const userObj: Partial<User> = { ...userDTO, apiKey: uuidv4() };
+    const newUser = await this.usersRepository.save(userObj);
     delete newUser.password;
     return newUser;
   }
@@ -67,5 +69,9 @@ export class UsersService {
         twoFASecret: null,
       },
     );
+  }
+
+  async validateApiKey(apiKey: string): Promise<User> {
+    return await this.usersRepository.findOneBy({ apiKey: apiKey });
   }
 }

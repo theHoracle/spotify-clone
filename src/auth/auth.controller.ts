@@ -14,6 +14,7 @@ import { LoginDTO } from './dto/login-dto';
 import { JwtAuthGuard } from './jwt.guard';
 import { ValidateTokenDTO } from './dto/validate-token-dto';
 import { UpdateResult } from 'typeorm';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -83,5 +84,14 @@ export class AuthController {
     console.log(request.user);
     const { user } = request;
     return this.authService.validate2FAToken(user.userId, token);
+  }
+
+  @Get('profile')
+  @UseGuards(AuthGuard('bearer'))
+  getProfile(@Request() req) {
+    return {
+      message: 'Authenticated with API key',
+      user: req.user,
+    };
   }
 }

@@ -6,6 +6,7 @@ import { JwtService } from '@nestjs/jwt';
 import { ArtistService } from 'src/artist/artist.service';
 import * as speakeasy from 'speakeasy';
 import { UpdateResult } from 'typeorm';
+import { User } from 'src/users/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -84,5 +85,9 @@ export class AuthService {
 
   async revoke2FAkey(userId: number): Promise<UpdateResult> {
     return await this.userService.revoke2FAKey(userId);
+  }
+
+  async validateApiKey(apiKey: string): Promise<User> {
+    return await this.userService.validateApiKey(apiKey);
   }
 }

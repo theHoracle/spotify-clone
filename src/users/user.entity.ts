@@ -27,4 +27,7 @@ export class User {
 
   @Column({ default: false, type: 'boolean' })
   enable2FA: boolean;
+
+  @Column({ default: '' })
+  apiKey: string;
 }
