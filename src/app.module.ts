@@ -11,25 +11,14 @@ import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { PlaylistModule } from './playlist/playlist.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { Song } from './songs/song.entity';
 import { ArtistModule } from './artist/artist.module';
 import { UsersModule } from './users/users.module';
-import { Artist } from './artist/artist.entity';
-import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { dataSourceOptions } from 'db/data-source';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      database: 'nest-spotify-clone-db',
-      host: 'localhost',
-      port: 5432,
-      username: 'thehoracle',
-      type: 'postgres',
-      entities: [Song, Artist, User],
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(dataSourceOptions),
     SongsModule,
     ArtistModule,
     UsersModule,

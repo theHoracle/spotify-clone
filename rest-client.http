@@ -11,10 +11,11 @@ GET http://localhost:3000/songs/1
 ### CREATE NEW SONGS
 POST http://localhost:3000/songs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
 
 {
 "title": "Waking up wednesdday",
-"artists": [1,2],
+"artists": [1],
 "releaseDate": "2024-10-10",
 "duration": "02:55",
 "lyrics": "One day we go to school, Tuesdaey we go to church, Wednessay we figh our home , Thursday we stay at home, Friday we have to Chop lofe bvjjv v ihdiu"
@@ -25,7 +26,7 @@ Content-Type: application/json
 
 {
 "title": "Horacle Fights Ye",
-"artists": ["KDOt", "YE", "Post Malone"],
+"artists": [1],
 "releaseDate": "2024-09-02",
 "duration": "03:25",
 "lyrics": "How to work here"
@@ -37,10 +38,41 @@ DELETE  http://localhost:3000/songs/1
 ### Sign up user
 POST http://localhost:3000/auth/signup
 Content-Type: "application/json"
+
 {
-"email": "theHoracle0@gmail.com",
-"firstName": "James",
-"lastName": "Morgan",
-"username": "theHoracle",
-"password": "223456"
+"email":"theHoracle0@gmail.com",
+"firstName":"James",
+"lastName":"Morgan",
+"username":"theHoracle",
+"password":"223456"
 }
+###
+
+### ENable 2FA
+GET http://localhost:3000/auth/enable-2fa
+Content-Type: 'application/json'
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+
+### SHOW PROFILE
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+
+### Validate 2FA
+POST  http://localhost:3000/auth/validate-2fa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+
+{
+    "token": "369120"
+}
+### DISABLE 2FA
+GET http://localhost:3000/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+
+### REVOKE 2FA SECRET
+GET http://localhost:3000/auth/revoke-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+
+### Access Profile
+GET http://localhost:3000/auth/profile
+Authorization: Bearer cb057151-2ee3-4e87-a371-994929fa2b9a
