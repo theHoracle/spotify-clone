@@ -51,7 +51,7 @@ export class AuthService {
     throw new UnauthorizedException('UNAUTHORIZED: Passwords do not match');
   }
 
-  async enable2FA(userId: number): Promise<TEnable2FA> {
+  async enable2FA(userId: string): Promise<TEnable2FA> {
     const user = await this.userService.findById({ id: userId });
     if (user.enable2FA) {
       return {
@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   async validate2FAToken(
-    userId: number,
+    userId: string,
     token: string,
   ): Promise<{ verified: boolean }> {
     const user = await this.userService.findById({ id: userId });
@@ -79,11 +79,11 @@ export class AuthService {
     return { verified: isVerified };
   }
 
-  async disable2FA(userId: number): Promise<UpdateResult> {
+  async disable2FA(userId: string): Promise<UpdateResult> {
     return await this.userService.disable2FA(userId);
   }
 
-  async revoke2FAkey(userId: number): Promise<UpdateResult> {
+  async revoke2FAkey(userId: string): Promise<UpdateResult> {
     return await this.userService.revoke2FAKey(userId);
   }
 

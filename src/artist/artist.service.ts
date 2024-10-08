@@ -10,7 +10,7 @@ export class ArtistService {
     private artistRepository: Repository<Artist>,
   ) {}
 
-  findArtist(userId: number): Promise<Artist> {
+  findArtist(userId: string): Promise<Artist> {
     return this.artistRepository.findOneBy({ user: { id: userId } });
   }
 }

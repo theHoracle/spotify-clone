@@ -1,7 +1,7 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 
 export const dataSourceOptions: DataSourceOptions = {
-  database: 'nest-spotify-clone-db',
+  database: 'nest-spotify-db',
   host: 'localhost',
   port: 5432,
   username: 'thehoracle',

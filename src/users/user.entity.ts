@@ -1,10 +1,18 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Playlist } from 'src/playlist/playlist.entity';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity('users')
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  // Use 'uuid' as the type to generate UUID-based primary keys
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ unique: true })
   email: string;
@@ -30,4 +38,11 @@ export class User {
 
   @Column({ default: '' })
   apiKey: string;
+
+  // Auto-generate creation timestamp
+  @CreateDateColumn({ type: 'timestamptz' })
+  createdAt: Date;
+
+  @OneToMany(() => Playlist, (playlist) => playlist.user)
+  playlists: Playlist[];
 }

@@ -36,7 +36,7 @@ export class UsersService {
   }
 
   async updateSecretkey(
-    userId: number,
+    userId: string,
     secretkey: string,
   ): Promise<UpdateResult> {
     // const user = await this.usersRepository.findOneBy({ id: userId });
@@ -52,7 +52,7 @@ export class UsersService {
     );
   }
 
-  async disable2FA(userId: number): Promise<UpdateResult> {
+  async disable2FA(userId: string): Promise<UpdateResult> {
     return await this.usersRepository.update(
       { id: userId },
       {
@@ -61,7 +61,7 @@ export class UsersService {
     );
   }
 
-  async revoke2FAKey(userId: number): Promise<UpdateResult> {
+  async revoke2FAKey(userId: string): Promise<UpdateResult> {
     return await this.usersRepository.update(
       { id: userId },
       {

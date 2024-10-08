@@ -1,6 +1,6 @@
 interface Payload {
   email: string;
-  userId: number;
+  userId: string;
   username: string;
   artistId?: number;
 }
