@@ -46,16 +46,16 @@ Content-Type: "application/json"
 "username":"theHoracle",
 "password":"223456"
 }
-###
+
 
 ### ENable 2FA
 GET http://localhost:3000/auth/enable-2fa
 Content-Type: 'application/json'
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjoiNGExM2Q3MjMtNzU2ZS00ZmZiLWJhYWQtY2UxYjBiYTk1ODliIiwidXNlcm5hbWUiOiJ0aGVIb3JhY2xlIiwiaWF0IjoxNzI4NTcxMTE3LCJleHAiOjE3Mjg1NzQ3MTd9.QLDoSsSmpAN2N3EhRRdXUCfbNqAhy5NP75rQ4gHG3hY
 
 ### SHOW PROFILE
 GET http://localhost:3000/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5vdHRoZUhvcmFjbGVAZ21haWwuY29tIiwidXNlcklkIjozLCJ1c2VybmFtZSI6InRoZUhvcmFjbGUiLCJpYXQiOjE3MjgyOTk2MjUsImV4cCI6MTcyODM4NjAyNX0.WpYZkyXxN7AcAMLLc-zqvSuvAGi4_cEssZ8LCVHitH0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkhvcmFjbGUyMTJAZ21haWwuY29tIiwidXNlcklkIjoiYTgyZDVkNDktMWMzNC00YzAyLWE3MWMtY2NkMWY4YWMxNzU3IiwidXNlcm5hbWUiOiJ0aGVIb3JhY2xlIiwiaWF0IjoxNzI4NTg0NTEwLCJleHAiOjE3Mjg1ODgxMTB9.q_D5W--hPLD1z8dZcVd16eD-mFIjAIA-pgiC6OHsW_E
 
 ### Validate 2FA
 POST  http://localhost:3000/auth/validate-2fa

@@ -1,4 +1,5 @@
 import { Artist } from 'src/artist/artist.entity';
+import { Playlist } from 'src/playlist/playlist.entity';
 import {
   Column,
   Entity,
@@ -18,6 +19,9 @@ export class Song {
   @ManyToMany(() => Artist, (artist) => artist.songs, { cascade: true })
   @JoinTable({ name: 'song_artists' })
   artists: Artist[];
+
+  @ManyToMany(() => Playlist, (playlist) => playlist.songs)
+  playlists: Playlist[];
 
   @Column({ type: 'date' })
   releaseDate: Date;

@@ -1,7 +1,7 @@
 import { JwtModuleOptions } from '@nestjs/jwt';
 
 export const authConstants: JwtModuleOptions = {
-  secret: 'HAD_12X£@',
+  secret: process.env.JWT_SECRET || 'secretKey',
   signOptions: {
     expiresIn: '1d',
   },

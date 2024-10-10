@@ -1,6 +1,13 @@
 import { Song } from 'src/songs/song.entity';
 import { User } from 'src/users/user.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('playlists')
 export class Playlist {
@@ -9,10 +16,11 @@ export class Playlist {
 
   @Column()
   name: string;
-  // incomplete, each playlst will have multiple songs
-  @OneToMany(() => Song, (song) => song)
+
+  @ManyToMany(() => Song, (song) => song.playlists)
+  @JoinTable({ name: 'playlist_songs' }) // Define the join table between playlists and songs
   songs: Song[];
 
-  @OneToMany(() => User, (user) => user.playlists)
+  @ManyToOne(() => User, (user) => user.playlists)
   user: User;
 }

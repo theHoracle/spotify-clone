@@ -14,12 +14,21 @@ import { DataSource } from 'typeorm';
 import { ArtistModule } from './artist/artist.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-import { dataSourceOptions } from 'db/data-source';
+import { typeOrmAsyncConfig } from 'db/data-source';
 import { SeedModule } from './seed/seed.module';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
+import { validate } from 'env.validation';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(dataSourceOptions),
+    ConfigModule.forRoot({
+      envFilePath: ['.env.development', '.env.production'],
+      isGlobal: true,
+      load: [configuration],
+      validate: validate,
+    }),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     SongsModule,
     ArtistModule,
     UsersModule,

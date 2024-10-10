@@ -8,6 +8,10 @@ import { Playlist } from 'src/playlist/playlist.entity';
 import { Song } from 'src/songs/song.entity';
 
 export const seedData = async (manager: EntityManager): Promise<void> => {
+  // await seedPlaylist();
+  await seedUser();
+  await seedArtist();
+  await seedSongs();
   await seedPlaylist();
 
   async function seedUser() {
@@ -29,7 +33,7 @@ export const seedData = async (manager: EntityManager): Promise<void> => {
     console.log(user);
     const artist = new Artist();
     artist.user = user;
-    console.log(artist)
+    console.log(artist);
     return await manager.getRepository(Artist).save(artist);
   }
 
@@ -38,9 +42,9 @@ export const seedData = async (manager: EntityManager): Promise<void> => {
     song.title = faker.music.songName();
     song.artists = [await seedArtist(), await seedArtist()];
     song.duration = '03:25';
-    song.lyrics = faker.lorem.paragraphs(10);
+    song.lyrics = faker.lorem.paragraphs(5);
     song.releaseDate = faker.date.past();
-
+    console.log(song);
     return await manager.getRepository(Song).save(song);
   }
 
