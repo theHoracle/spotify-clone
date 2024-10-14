@@ -1,4 +1,5 @@
 export default () => ({
+  NODE_ENV: process.env.NODE_ENV,
   port: parseInt(process.env.PORT) || 3000,
   secret: process.env.JWT_SECRET,
   dbHost: process.env.DB_HOST,

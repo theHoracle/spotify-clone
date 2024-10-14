@@ -15,8 +15,10 @@ import { JwtAuthGuard } from './jwt.guard';
 import { ValidateTokenDTO } from './dto/validate-token-dto';
 import { UpdateResult } from 'typeorm';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('auth')
 export class AuthController {
   constructor(
     private userService: UsersService,
@@ -24,6 +26,12 @@ export class AuthController {
   ) {}
 
   @Post('signup')
+  @ApiOperation({ summary: 'Register a new user' })
+  @ApiResponse({
+    status: 201,
+    description: 'User created successfully',
+    type: User,
+  })
   signup(
     @Body()
     userDTO: CreateUserDTO,
@@ -32,6 +40,16 @@ export class AuthController {
   }
 
   @Post('login')
+  @ApiOperation({ summary: 'Login a user' })
+  @ApiResponse({
+    status: 200,
+    description: 'User logged in successfully',
+    type: String,
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Invalid credentials',
+  })
   login(
     @Body()
     loginDTO: LoginDTO,
